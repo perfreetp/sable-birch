@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { Viewer } from './viewer.ts';
 import type { Pose } from './types.ts';
 import { useStore, store, selectShard, setPose as setPoseStore, toast } from './store.ts';
-import { approxDistance } from './distance.ts';
+import { approxDistance, closestDistanceBetween } from './distance.ts';
 import { planeNormal } from './kabsch.ts';
 import type { AlignmentTriple } from './types.ts';
 import { matrixFromPose, poseFromObject } from './transform.ts';
@@ -408,14 +408,51 @@ export class SceneController {
     }
   }
 
-  /** 对当前选中片与其最近邻做一次精确距离计算 */
+  /**
+   * 对当前选中片与其最近邻做一次精确距离计算：
+   * 先用采样点近似找出最近的邻片，再用两网格之间的精确最近距离
+   * （BVH closestPointToGeometry）复核并刷新视口连线。
+   */
   measureExact() {
     const s = store.getState();
     if (!s.selected) { toast('请先选择一片残片', 'error'); return; }
-    this.updateNeighborDistance(s.selected);
-    const pair = store.getState().neighborPair;
-    if (pair) toast(`最近距离 ${pair.distance.toFixed(2)} mm（${pair.a} ↔ ${pair.b}）`, 'ok');
-    else toast('附近没有其他残片', 'info');
+    const sel = s.selected;
+    const src = s.shards.find(x => x.id === sel);
+    const inst = s.instances[sel];
+    if (!src || !inst) return;
+
+    // 近似找邻片
+    let bestId: string | null = null;
+    let best = Infinity;
+    for (const other of s.shards) {
+      if (other.id === sel) continue;
+      const oi = s.instances[other.id];
+      if (!oi || !oi.visible || oi.mergedInto) continue;
+      const r = approxDistance(src, inst.pose, other, oi.pose, 300);
+      if (r && r.distance < best) { best = r.distance; bestId = other.id; }
+    }
+    if (!bestId) { toast('附近没有其他残片', 'info'); return; }
+
+    const otherSrc = s.shards.find(x => x.id === bestId)!;
+    const otherInst = s.instances[bestId];
+    const exact = closestDistanceBetween(src, inst.pose, otherSrc, otherInst.pose);
+    if (!exact) { toast('精确距离计算失败', 'error'); return; }
+
+    if (exact.pointA && exact.pointB) {
+      this.viewer.showDistancePair({ a: sel, b: bestId, pointA: exact.pointA, pointB: exact.pointB });
+    }
+    store.setState({
+      neighborPair: {
+        a: sel, b: bestId, distance: exact.distance,
+        pointA: (exact.pointA ?? new THREE.Vector3()).toArray() as [number, number, number],
+        pointB: (exact.pointB ?? new THREE.Vector3()).toArray() as [number, number, number],
+      },
+      liveDistance: exact.distance,
+    });
+    toast(
+      `精确最近距离 ${exact.distance.toFixed(3)} mm（${inst.name} ↔ ${otherInst.name}）`,
+      'ok',
+    );
   }
 
   /* ---------------- 相机 ---------------- */

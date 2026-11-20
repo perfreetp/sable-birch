@@ -2,7 +2,6 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { MeshBVH } from 'three-mesh-bvh';
 import type { ShardSource } from './types.ts';
 import type { Pose } from './types.ts';
 import { matrixFromPose, poseFromObject, snapAngle, snapTranslation } from './transform.ts';
@@ -756,5 +755,3 @@ export class Viewer {
 // 注册加速拾取
 import { acceleratedRaycast } from 'three-mesh-bvh';
 THREE.Mesh.prototype.raycast = acceleratedRaycast;
-
-export { MeshBVH };

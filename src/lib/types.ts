@@ -46,12 +46,6 @@ export interface AlignmentTriple {
   normalOffset: number;
 }
 
-export interface BreakFacePair {
-  a: string;
-  b: string;
-  distance: number;
-}
-
 export interface GapBin {
   /** 区间下界（含） */
   from: number;
@@ -94,11 +88,6 @@ export interface MergeReport {
     /** 问题三角形在合并几何中的索引列表（抽样上限） */
     badTriangles: number[];
   };
-}
-
-export interface IssueMeshData {
-  positions: Float32Array;
-  triangleCount: number;
 }
 
 export interface ShardProblem {
