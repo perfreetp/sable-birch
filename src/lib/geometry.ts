@@ -23,43 +23,6 @@ export function bakeGeometry(geometry: THREE.BufferGeometry, matrix?: THREE.Matr
   return { positions, index, triangleCount: index.length / 3 };
 }
 
-/** 从一组三角形索引构造高亮几何（世界坐标） */
-export function extractTriangles(
-  geometry: THREE.BufferGeometry,
-  matrix: THREE.Matrix4,
-  triangles: ArrayLike<number>,
-  maxCount = 6000,
-): THREE.BufferGeometry {
-  const index = geometry.index;
-  const pos = geometry.attributes.position;
-  const count = Math.min(triangles.length, maxCount);
-  const positions = new Float32Array(count * 9);
-  const a = new THREE.Vector3();
-  const n = index ? index.count / 3 : pos.count / 3;
-  for (let i = 0; i < count; i++) {
-    const t = triangles[i];
-    if (t < 0 || t >= n) continue;
-    for (let k = 0; k < 3; k++) {
-      const vi = index ? index.getX(t * 3 + k) : t * 3 + k;
-      a.fromBufferAttribute(pos, vi).applyMatrix4(matrix);
-      positions[i * 9 + k * 3] = a.x;
-      positions[i * 9 + k * 3 + 1] = a.y;
-      positions[i * 9 + k * 3 + 2] = a.z;
-    }
-  }
-  const out = new THREE.BufferGeometry();
-  out.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  out.computeVertexNormals();
-  return out;
-}
-
-/** 世界包围盒 */
-export function worldBounds(geometry: THREE.BufferGeometry, matrix: THREE.Matrix4): THREE.Box3 {
-  if (!geometry.boundingBox) geometry.computeBoundingBox();
-  const box = geometry.boundingBox!.clone();
-  return box.applyMatrix4(matrix);
-}
-
 /**
  * 归一化一个网格：缩放至 targetDiagonal（包围盒对角线），居中原点。
  * 用于导入了单位/比例不一致的扫描网格时的自动规整。

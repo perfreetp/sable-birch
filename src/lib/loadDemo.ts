@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { parseSTL, weldGeometry, geometryVolume, geometryEdgeLengthStats } from './stl.ts';
+import { parseSTL, weldGeometry, geometryVolume } from './stl.ts';
 import { normalizeGeometry, sampleSurfacePoints } from './geometry.ts';
 import { registerShards, store, toast } from './store.ts';
 import type { Pose, ShardSource } from './types.ts';
@@ -194,5 +194,3 @@ function parseOBJ(text: string): THREE.BufferGeometry {
   g.computeVertexNormals();
   return g;
 }
-
-export { geometryEdgeLengthStats };

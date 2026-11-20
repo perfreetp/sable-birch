@@ -101,17 +101,3 @@ export function approxDistance(
   return { distance: best, pointFrom: bestFrom, pointTo: bestTo };
 }
 
-/** 世界空间射线拾取残片 */
-export function pickShard(
-  raycaster: THREE.Raycaster,
-  shards: { source: ShardSource; object: THREE.Object3D }[],
-): { source: ShardSource; point: THREE.Vector3; faceIndex: number } | null {
-  const hits = raycaster.intersectObjects(shards.map(s => s.object), false);
-  for (const h of hits) {
-    const entry = shards.find(s => s.object === h.object);
-    if (entry) return { source: entry.source, point: h.point, faceIndex: h.faceIndex ?? 0 };
-  }
-  return null;
-}
-
-export { _target as _debugTarget };

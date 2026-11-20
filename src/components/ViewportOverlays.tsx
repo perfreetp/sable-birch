@@ -94,6 +94,13 @@ export function ViewportOverlays({ controller }: Props) {
             距离探针
           </button>
           <button
+            className="btn"
+            onClick={() => controller()?.measureExact()}
+            title="对选中片与其最近邻做一次精确距离计算"
+          >
+            精确测距
+          </button>
+          <button
             className={`btn ${globalOpacity < 0.99 ? 'active' : ''}`}
             onClick={() => {
               store.setState({ globalOpacity: globalOpacity < 0.99 ? 1 : 0.45 });

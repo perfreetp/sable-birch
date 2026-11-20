@@ -47,7 +47,6 @@ export class Viewer {
   private resizeObserver: ResizeObserver;
   private distanceLines = new THREE.Group();
   private pointMarkers = new THREE.Group();
-  private ghostGroup = new THREE.Group();
   private mergedView: THREE.Mesh | null = null;
   private problemGroup = new THREE.Group();
   private translationSnap = 1;
@@ -95,7 +94,6 @@ export class Viewer {
     this.scene.add(this.overlay);
     this.overlay.add(this.distanceLines);
     this.overlay.add(this.pointMarkers);
-    this.overlay.add(this.ghostGroup);
     this.overlay.add(this.problemGroup);
 
     this.transform = new TransformControls(this.camera, this.renderer.domElement);
@@ -538,16 +536,6 @@ export class Viewer {
       ring.renderOrder = 999;
       this.pointMarkers.add(ring);
     }
-    this.render();
-  }
-
-  setGhost(geometry: THREE.BufferGeometry | null, color = 0x4de0c0, opacity = 0.35) {
-    this.clearGroup(this.ghostGroup);
-    if (!geometry) { this.render(); return; }
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({
-      color, transparent: true, opacity, roughness: 0.6, metalness: 0.1, side: THREE.DoubleSide, depthWrite: false,
-    }));
-    this.ghostGroup.add(mesh);
     this.render();
   }
 
