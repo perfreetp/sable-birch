@@ -16,3 +16,7 @@ node_modules/
 __pycache__/
 .venv/
 venv/
+dist/
+test/.downloads/
+test/*.png
+test/.*.bundle.mjs
