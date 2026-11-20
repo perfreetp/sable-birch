@@ -1,0 +1,317 @@
+{
+  "name": "陶俑躯干 · 虚拟复原示例",
+  "units": "mm",
+  "description": "程序化生成的中空陶俑躯干，按 Voronoi 分割为多片，每片均为水密实体网格，可直接进行实体布尔合并。",
+  "shards": [
+    {
+      "file": "shard-01.stl",
+      "name": "残片 01",
+      "color": "#c88a5e",
+      "triangleCount": 3810,
+      "volume": 23336,
+      "truePose": {
+        "position": [
+          -33.403729880117126,
+          201.68347634057835,
+          30.032923664585606
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          -76.04,
+          261.82,
+          68.37
+        ],
+        "rotation": [
+          7.3,
+          7.8,
+          -4.6
+        ]
+      }
+    },
+    {
+      "file": "shard-02.stl",
+      "name": "残片 02",
+      "color": "#bf7f55",
+      "triangleCount": 4020,
+      "volume": 25120,
+      "truePose": {
+        "position": [
+          -29.438782554001573,
+          203.02899789263944,
+          -31.620806740103358
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          -62.49,
+          257.63,
+          -67.12
+        ],
+        "rotation": [
+          9,
+          -1.1,
+          -2.7
+        ]
+      }
+    },
+    {
+      "file": "shard-03.stl",
+      "name": "残片 03",
+      "color": "#d19a6b",
+      "triangleCount": 5960,
+      "volume": 39443,
+      "truePose": {
+        "position": [
+          31.31278877472233,
+          188.9296797094887,
+          28.095961408907307
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          83.35,
+          254.21,
+          74.79
+        ],
+        "rotation": [
+          5,
+          -8.2,
+          2.4
+        ]
+      }
+    },
+    {
+      "file": "shard-04.stl",
+      "name": "残片 04",
+      "color": "#b4744e",
+      "triangleCount": 4476,
+      "volume": 42151,
+      "truePose": {
+        "position": [
+          45.15326540238831,
+          68.14046472520076,
+          -15.99865999170596
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          121.62,
+          32.23,
+          -43.09
+        ],
+        "rotation": [
+          8.3,
+          9.2,
+          5.6
+        ]
+      }
+    },
+    {
+      "file": "shard-05.stl",
+      "name": "残片 05",
+      "color": "#c98f66",
+      "triangleCount": 5364,
+      "volume": 52470,
+      "truePose": {
+        "position": [
+          3.8391693672231524,
+          106.67980858696384,
+          39.45992005697941
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          13.42,
+          98.06,
+          137.92
+        ],
+        "rotation": [
+          -4.4,
+          -10.3,
+          9.1
+        ]
+      }
+    },
+    {
+      "file": "shard-06.stl",
+      "name": "残片 06",
+      "color": "#a96848",
+      "triangleCount": 5518,
+      "volume": 53505,
+      "truePose": {
+        "position": [
+          -8.958155971106173,
+          72.81617346658963,
+          -39.64892531309272
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          -28.24,
+          30.03,
+          -125
+        ],
+        "rotation": [
+          5.6,
+          3.3,
+          10.7
+        ]
+      }
+    },
+    {
+      "file": "shard-07.stl",
+      "name": "残片 07",
+      "color": "#d5a274",
+      "triangleCount": 6386,
+      "volume": 53973,
+      "truePose": {
+        "position": [
+          -44.64608060720171,
+          141.13148213513335,
+          -4.994490619747125
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          -152.68,
+          174.7,
+          -17.08
+        ],
+        "rotation": [
+          1.7,
+          12.9,
+          8.6
+        ]
+      }
+    },
+    {
+      "file": "shard-08.stl",
+      "name": "残片 08",
+      "color": "#c07c52",
+      "triangleCount": 7510,
+      "volume": 58141,
+      "truePose": {
+        "position": [
+          33.52224819887333,
+          166.50256201633374,
+          -25.494244667969042
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          88.9,
+          212.91,
+          -67.61
+        ],
+        "rotation": [
+          3.9,
+          23.5,
+          2.5
+        ]
+      }
+    },
+    {
+      "file": "shard-09.stl",
+      "name": "残片 09",
+      "color": "#b9865f",
+      "triangleCount": 7086,
+      "volume": 74191,
+      "truePose": {
+        "position": [
+          29.794562575443535,
+          29.61096464845222,
+          12.509536878579496
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          71.36,
+          -25.43,
+          29.96
+        ],
+        "rotation": [
+          9.8,
+          14,
+          1
+        ]
+      }
+    },
+    {
+      "file": "shard-10.stl",
+      "name": "残片 10",
+      "color": "#cc9269",
+      "triangleCount": 9904,
+      "volume": 102450,
+      "truePose": {
+        "position": [
+          -32.057825224598886,
+          36.94447396408322,
+          9.02679185552819
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "explodedPose": {
+        "position": [
+          -75.29,
+          -11.06,
+          21.2
+        ],
+        "rotation": [
+          2.6,
+          -13.2,
+          -9.1
+        ]
+      }
+    }
+  ]
+}
