@@ -1,0 +1,26 @@
+{
+  "name": "artifact-texture-viewer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "基于 Vue3 + three.js + potree-core 的文物高精纹理查看器",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "pinia": "^4.1.0",
+    "potree-core": "^2.0.17",
+    "three": "^0.187.0",
+    "vue": "^3.5.46"
+  },
+  "devDependencies": {
+    "@types/three": "^0.187.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "typescript": "~5.8.0",
+    "vite": "^8.3.8",
+    "vue-tsc": "^3.0.0"
+  }
+}

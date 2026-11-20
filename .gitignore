@@ -16,3 +16,24 @@ node_modules/
 __pycache__/
 .venv/
 venv/
+
+# 构建产物
+dist/
+dist-ssr/
+*.local
+
+# 编辑器
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 测试截图（可随时由脚本重新生成）
+scripts/*.png
+
+# 日志
+*.log
