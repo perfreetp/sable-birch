@@ -1,0 +1,28 @@
+{
+  "name": "aeroscope",
+  "version": "1.0.0",
+  "description": "低空航路气象体积渲染：雷暴单体积渲染、时间序列、密度阈值、航路垂直剖面与能见度导出",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "postprocessing": "^6.39.6",
+    "three": "^0.187.0",
+    "vue": "^3.5.46"
+  },
+  "devDependencies": {
+    "@types/three": "^0.187.0",
+    "@vitejs/plugin-vue": "^6.0.11",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.8",
+    "vue-tsc": "^3.3.14"
+  }
+}
