@@ -1,0 +1,30 @@
+{
+  "name": "berth-attitude-sim",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "preview": "vite preview",
+    "test:engine": "tsx scripts/smoke.ts",
+    "test:scenarios": "tsx scripts/scenarios.ts",
+    "test:export": "tsx scripts/export-roundtrip.ts",
+    "test:browser": "tsx scripts/browser-smoke.ts"
+  },
+  "dependencies": {
+    "postprocessing": "^6.36.7",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@types/three": "^0.169.0",
+    "puppeteer-core": "^23.9.0",
+    "svelte": "^5.16.0",
+    "svelte-check": "^4.1.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.7"
+  }
+}
