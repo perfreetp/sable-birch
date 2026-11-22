@@ -1,0 +1,195 @@
+:root {
+  color-scheme: dark;
+  --bg: #10141a;
+  --panel: rgba(20, 26, 34, 0.88);
+  --border: #2c3644;
+  --fg: #dbe4ee;
+  --muted: #8b98a8;
+  --accent: #4da3ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font: 14px/1.5 system-ui, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+#view {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#panel {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
+  width: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#panel h1 {
+  margin: 0;
+  font-size: 17px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  backdrop-filter: blur(8px);
+}
+
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card .hint {
+  font-weight: 400;
+  text-transform: none;
+  font-size: 11px;
+}
+
+/* ---- 图层列表 ---- */
+
+.layer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.layer-row {
+  display: grid;
+  grid-template-columns: 16px 38px 1fr 34px 64px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.layer-row.dragging {
+  opacity: 0.4;
+}
+
+.layer-row.drop-above {
+  box-shadow: 0 -2px 0 0 var(--accent);
+}
+
+.layer-row.drop-below {
+  box-shadow: 0 2px 0 0 var(--accent);
+}
+
+.drag-handle {
+  cursor: grab;
+  color: var(--muted);
+  user-select: none;
+}
+
+.layer-name {
+  font-weight: 600;
+}
+
+.opacity-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: right;
+}
+
+/* ---- 控件 ---- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field > span {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+}
+
+.field output {
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.field-inline {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+select,
+button {
+  background: #1c2530;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+.toggle.active {
+  border-color: var(--accent);
+  background: rgba(77, 163, 255, 0.15);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  flex: 1;
+}
+
+.status {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  min-height: 1.2em;
+}
+
+.status.error {
+  color: #ff7a7a;
+}
